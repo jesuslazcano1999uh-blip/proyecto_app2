@@ -1,0 +1,162 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 03-07-2026 a las 02:46:47
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `prueba_base`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_apt_catalogo_usuario`
+--
+
+CREATE TABLE `tbl_apt_catalogo_usuario` (
+  `ID_USUARIO` int(50) NOT NULL COMMENT 'id de usuario',
+  `Nombre` varchar(100) NOT NULL COMMENT 'nombre y apellido ',
+  `email` text NOT NULL,
+  `Telefono` int(10) NOT NULL,
+  `Direccion` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_apt_catalogo_usuario`
+--
+
+INSERT INTO `tbl_apt_catalogo_usuario` (`ID_USUARIO`, `Nombre`, `email`, `Telefono`, `Direccion`) VALUES
+(1, 'Bruno', 'Bruno@gmail.com', 0, 0),
+(2, 'Bruno', 'bruno@gmail.com', 55338533, 123);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_cre`
+--
+
+CREATE TABLE `tbl_cre` (
+  `ID_USUARIO` int(11) NOT NULL,
+  `Usuario` varchar(150) NOT NULL,
+  `Contraseña` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_cre`
+--
+
+INSERT INTO `tbl_cre` (`ID_USUARIO`, `Usuario`, `Contraseña`) VALUES
+(2, 'Bruno', 'elmeco123');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_eventos`
+--
+
+CREATE TABLE `tbl_eventos` (
+  `ID_Evento` int(100) NOT NULL,
+  `Evento` varchar(100) NOT NULL,
+  `Lugar` varchar(100) NOT NULL,
+  `Hora` time(4) NOT NULL,
+  `Fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_eventos`
+--
+
+INSERT INTO `tbl_eventos` (`ID_Evento`, `Evento`, `Lugar`, `Hora`, `Fecha`) VALUES
+(1, 'DigitalCircus', 'tlane', '17:06:00.0000', '2026-06-09');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_notificaciones`
+--
+
+CREATE TABLE `tbl_notificaciones` (
+  `Id_Notificacion` int(11) NOT NULL,
+  `Titulo` varchar(100) NOT NULL,
+  `Descripcion` text DEFAULT NULL,
+  `Fecha` date NOT NULL,
+  `Hora` time NOT NULL,
+  `Categoria` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_notificaciones`
+--
+
+INSERT INTO `tbl_notificaciones` (`Id_Notificacion`, `Titulo`, `Descripcion`, `Fecha`, `Hora`, `Categoria`) VALUES
+(1, 'Examen de Programacion', 'Estudiar para el parcial', '2026-07-05', '18:00:00', 'Escuela'),
+(2, 'Examen de Programacion', 'Estudiar para el parcial', '2026-07-05', '18:00:00', 'Escuela');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `tbl_apt_catalogo_usuario`
+--
+ALTER TABLE `tbl_apt_catalogo_usuario`
+  ADD PRIMARY KEY (`ID_USUARIO`);
+
+--
+-- Indices de la tabla `tbl_cre`
+--
+ALTER TABLE `tbl_cre`
+  ADD PRIMARY KEY (`Usuario`);
+
+--
+-- Indices de la tabla `tbl_eventos`
+--
+ALTER TABLE `tbl_eventos`
+  ADD PRIMARY KEY (`ID_Evento`);
+
+--
+-- Indices de la tabla `tbl_notificaciones`
+--
+ALTER TABLE `tbl_notificaciones`
+  ADD PRIMARY KEY (`Id_Notificacion`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_apt_catalogo_usuario`
+--
+ALTER TABLE `tbl_apt_catalogo_usuario`
+  MODIFY `ID_USUARIO` int(50) NOT NULL AUTO_INCREMENT COMMENT 'id de usuario', AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_eventos`
+--
+ALTER TABLE `tbl_eventos`
+  MODIFY `ID_Evento` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_notificaciones`
+--
+ALTER TABLE `tbl_notificaciones`
+  MODIFY `Id_Notificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
