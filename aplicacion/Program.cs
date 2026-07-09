@@ -29,6 +29,11 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapControllerRoute(
+    name: "recordatorios",
+    pattern: "RecordatoriosMoi/{action=IndexMoi}/{id?}",
+    defaults: new { controller = "RecordatoriosMoi", action = "IndexMoi" });
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}");
 

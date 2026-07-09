@@ -1,0 +1,44 @@
+﻿@model IEnumerable<aplicacion.Models.RecordatorioMoi>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">
+        No hay recordatorios. ¡Agrega uno!
+    </div>
+}
+else
+{
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Título</th>
+                <th>Fecha y Hora</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var horasRestantes = (item.FechaHora - DateTime.Now).TotalHours;
+                string claseColor = "";
+
+                if (horasRestantes <= 1 && horasRestantes > 0)
+                    claseColor = "table-danger";
+                else if (horasRestantes <= 6 && horasRestantes > 1)
+                    claseColor = "table-warning";
+                else if (horasRestantes <= 24 && horasRestantes > 6)
+                    claseColor = "table-info";
+                else if (horasRestantes > 24)
+                    claseColor = "table-success";
+                else
+                    claseColor = "table-secondary";
+
+                <tr class="@claseColor">
+                    <td>@item.Titulo</td>
+                    <td>@item.FechaHora.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@item.Descripcion</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
