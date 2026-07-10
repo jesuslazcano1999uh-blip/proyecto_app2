@@ -8,6 +8,8 @@ builder.Services.AddControllersWithViews();
 // Servicios personalizados
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<NotificacionService>();
+//Axel Ojeda Gallardo
+builder.Services.AddScoped<RecordatorioService>();
 
 var app = builder.Build();
 
